@@ -67,20 +67,19 @@
        :tools
        ;;ansible
        ;docker
-       editorconfig      ; let someone else argue about tabs vs spaces
+       editorconfig        ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
-       ;;gist              ; interacting with github gists
+       gist                ; interacting with github gists
        ;;macos             ; MacOS-specific commands
        ;;make              ; run make tasks from Emacs
-       magit             ; a git porcelain for Emacs
+       magit               ; a git porcelain for Emacs
        ;;password-store    ; password manager for nerds
-       ;;pdf               ; pdf enhancements
+       pdf                 ; pdf enhancements
        ;;prodigy           ; FIXME managing external services & code builders
        ;;rgb               ; creating color strings
        ;;terraform         ; infrastructure as code
        ;;tmux              ; an API for interacting with tmux
        ;;upload            ; map local to remote projects via ssh/ftp
-       wakatime
 
        :lang
        ;;assembly          ; assembly for fun or debugging
@@ -150,13 +149,13 @@
        ;impatient-mode    ; show off code over HTTP
 
        :config
-       ;; For literate config users. This will tangle+compile a config.org
-       ;; literate config in your `doom-private-dir' whenever it changes.
-       ;;literate
 
        ;; The default module sets reasonable defaults for Emacs. It also
        ;; provides a Spacemacs-inspired keybinding scheme, a custom yasnippet
        ;; library, and additional ex commands for evil-mode. Use it as a
        ;; reference for your own modules.
-       (default +bindings +snippets +evil-commands))
+       (default +bindings +snippets +evil-commands)
 
+       ;; For literate config users. This will tangle+compile a config.org
+       ;; literate config in your `doom-private-dir' whenever it changes.
+       literate)

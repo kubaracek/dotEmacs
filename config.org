@@ -1,0 +1,66 @@
+#+TITLE: Doom Emacs Config
+
+* Languages
+** Org
+*** Enable TODO timestamping
+
+#+BEGIN_SRC emacs-lisp
+(setq org-log-done 'time)
+#+END_SRC
+
+*** Global capture
+Allows me to spawn the ORG capture frame from anywhere by calling
+
+#+BEGIN_SRC bash
+emacsclient -c -F '(quote (name . "capture"))' -e '(activate-capture-frame)'
+#+END_SRC
+
+**** TODO Fix the multiple window popup
+#+BEGIN_SRC emacs-lisp
+(defadvice org-switch-to-buffer-other-window
+    (after supress-window-splitting activate)
+  "Delete the extra window if we're in a capture frame"
+  (if (equal "capture" (frame-parameter nil 'name))
+      (delete-other-windows)))
+
+(defadvice org-capture-finalize
+(after delete-capture-frame activate)
+  "Advise capture-finalize to close the frame"
+  (when (and (equal "capture" (frame-parameter nil 'name))
+	 (not (eq this-command 'org-capture-refile)))
+(delete-frame)))
+
+(defadvice org-capture-refile
+(after delete-capture-frame activate)
+  "Advise org-refile to close the frame"
+  (delete-frame))
+
+(defun activate-capture-frame ()
+  "run org-capture in capture frame"
+  (select-frame-by-name "capture")
+  (switch-to-buffer (get-buffer-create "*scratch*"))
+  (org-capture))
+#+END_SRC
+
+** Ruby
+*** Disable encoding comment
+Whenever I update a file it adds
+an encoding comment on top. Disable that
+
+#+BEGIN_SRC emacs-lisp
+(setq ruby-insert-encoding-magic-comment nil)
+#+END_SRC
+
+* Key Bindings
+
+* Editing
+
+** Autocompletion
+Show after a small delay and only when >= 3 characters are typed
+
+#+BEGIN_SRC emacs-lisp
+(setq company-idle-delay 0.2
+      company-minimum-prefix-length 3)
+#+END_SRC
+* Misc
+** Code completion
