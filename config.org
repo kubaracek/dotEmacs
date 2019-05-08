@@ -49,12 +49,38 @@ an encoding comment on top. Disable that
 
 #+BEGIN_SRC emacs-lisp
 (setq ruby-insert-encoding-magic-comment nil)
+(setq enh-ruby-add-encoding-comment-on-save nil)
+#+END_SRC
+
+** Haskell
+
+** APIb
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'auto-mode-alist '("\\.apib\\'" . apib-mode))
 #+END_SRC
 
 * Key Bindings
+** Indentation
+*** By assignment
 
+#+BEGIN_SRC emacs-lisp
+(defun align-assignments (start end)
+  "align by ="
+  (interactive "r")
+  (align start end "="))
+#+END_SRC
+** Avy - Search in file
+*** Allow everywhere
+
+#+BEGIN_SRC emacs-lisp
+(setq avy-all-windows t)
+#+END_SRC
+
+*** Bind Goto to C-SPC
+#+BEGIN_SRC emacs-lisp
+(map! :desc "Avy search Char / Word" :nv "C-SPC" #'avy-goto-char-timer)
+#+END_SRC
 * Editing
-
 ** Autocompletion
 Show after a small delay and only when >= 3 characters are typed
 

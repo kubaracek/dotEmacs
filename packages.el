@@ -14,3 +14,4 @@
 ;; Modes
 (package! slim-mode)
 (package! haskell-mode)
+(package! apib-mode)
