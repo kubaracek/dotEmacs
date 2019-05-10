@@ -19,11 +19,11 @@
         +auto
         +childframe
         )           ; as-you-type code completion
-       (helm             ; the *other* search engine for love and life
-        +fuzzy)          ; enable fuzzy search backend for helm
+       ;;(helm             ; the *other* search engine for love and life
+       ;; +fuzzy)          ; enable fuzzy search backend for helm
        ;;ido               ; the other *other* search engine...
-       ;;(ivy              ; a search engine for love and life
-       ;; +fuzzy)          ; enable fuzzy search backend for ivy
+       (ivy              ; a search engine for love and life
+        +fuzzy)          ; enable fuzzy search backend for ivy
 
        :ui
        ;;deft              ; notational velocity for Emacs
